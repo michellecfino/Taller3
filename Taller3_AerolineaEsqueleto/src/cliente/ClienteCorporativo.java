@@ -14,7 +14,7 @@ public class ClienteCorporativo extends Cliente {
     private int tamanoEmpresa;
 
     public ClienteCorporativo(String nombreEmpresa, int tamano) {
-        super(nombreEmpresa+ tamano);
+        super();
         this.nombreEmpresa = nombreEmpresa;
         this.tamanoEmpresa = tamano;
     }
@@ -37,10 +37,10 @@ public class ClienteCorporativo extends Cliente {
         return super.getIdentificador();
     }
 
-    public static ClienteCorportivo cargarDesdeJSON(JSONObject cliente) {
+    public static ClienteCorporativo cargarDesdeJSON(JSONObject cliente) {
         String nombreEmpresa = cliente.getString("nombreEmpresa");
         int tamano = cliente.getInt("tamanoEmpresa");
-        return new ClienteCorportivo(nombreEmpresa, tamano);
+        return new ClienteCorporativo(nombreEmpresa, tamano);
     }
 
     public JSONObject salvarEnJSON() {
