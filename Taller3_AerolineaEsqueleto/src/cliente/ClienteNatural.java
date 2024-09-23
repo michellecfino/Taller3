@@ -12,7 +12,7 @@ public class ClienteNatural extends Cliente {
 	private String nombre;
 
 	public ClienteNatural(String nombre) {
-		super(nombre); 
+		super(); 
 		this.nombre = nombre;
 	}
 
@@ -23,19 +23,8 @@ public class ClienteNatural extends Cliente {
 
 	@Override
 	public String getTipoCliente() {
-		return NATURAL;
-	}
+		return NATURAL;}
 
-	public static ClienteNatural cargarDesdeJSON(JSONObject cliente) {
-		String nombre = cliente.getString("nombre");
-		return new ClienteNatural(nombre);
-	}
-
-	public JSONObject salvarEnJSON() {
-		JSONObject json = new JSONObject();
-		json.put("nombre", nombre);
-		return json;
-	}
 }
 
 

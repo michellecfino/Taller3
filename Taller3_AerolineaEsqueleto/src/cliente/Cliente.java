@@ -6,14 +6,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Cliente {
+	
+	
     private String identificador;
     private List<Tiquete> tiquetesSinUsar;
     private List<Tiquete> tiquetesUsados;
+    private static int identificador1=0;
 
-    public Cliente(String identificador) {
-        this.identificador = identificador;
+    public Cliente() {
+        
         this.tiquetesSinUsar = new ArrayList<>();
         this.tiquetesUsados = new ArrayList<>();
+        //Variable para crear el identificador a partir de su creación :p
+        Cliente.identificador1++;
+        this.identificador = Integer.toString(identificador1);
     }
 
     public String getIdentificador() {
@@ -35,22 +41,15 @@ public abstract class Cliente {
     }
 
     public void usarTiquetes(Vuelo vuelo) {
-        List<Tiquete> usados = new ArrayList<>();
-        for (Tiquete tiquete : tiquetesSinUsar) {
+
+    	for (Tiquete tiquete : tiquetesSinUsar) {
             if (tiquete.getVuelo().equals(vuelo) && !tiquete.esUsado()) {
                 tiquete.marcarComoUsado();
-                usados.add(tiquete);
                 tiquetesUsados.add(tiquete);
+                tiquetesSinUsar.remove(tiquete);
             }
         }
-        tiquetesSinUsar.removeAll(usados);
     }
 
-    public List<Tiquete> getTiquetesSinUsar() {
-        return tiquetesSinUsar;
-    }
 
-    public List<Tiquete> getTiquetesUsados() {
-        return tiquetesUsados;
-    }
 }

@@ -12,19 +12,23 @@ import uniandes.dpoo.aerolinea.modelo.tarifas.CalculadoraTarifas;
 import cliente.Cliente;
 
 import java.util.Collection;
+import java.util.HashMap;
 
 public class Vuelo {
 
 	private String fecha;
 	private Ruta ruta;
 	private Avion avion;
-	private List<Tiquete> tiquetes;	
-	private Vuelo(Ruta ruta,String fecha, Avion avion) {
+	private Map<String, Tiquete> tiquetes;	
+	
+	
+	
+	public Vuelo(Ruta ruta,String fecha, Avion avion) {
 
 		this.fecha = fecha;
 		this.ruta = ruta;
 		this.avion = avion;
-		this.tiquetes= new ArrayList<>();
+		this.tiquetes= new HashMap<String,Tiquete>();
 	
 	}
 
@@ -46,14 +50,14 @@ public class Vuelo {
     public Collection<Tiquete> getTiquetes()
     {
         
-        return tiquetes;
+        return tiquetes.values();
     }
     
     public int venderTiquetes(Cliente cliente, CalculadoraTarifas calculadora, int cantidad) {
         int totalVendido = 0;
         for (int i = 0; i < cantidad; i++) {
             Tiquete tiquete = GeneradorTiquetes.generarTiquete(this, cliente, calculadora.calcularTarifa(this, cliente));
-            tiquetes.add(tiquete);
+            tiquetes.put(tiquete.getCodigo(), tiquete);
             cliente.agregarTiquete(tiquete);
             totalVendido++;
         }

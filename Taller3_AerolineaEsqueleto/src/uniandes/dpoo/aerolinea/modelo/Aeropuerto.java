@@ -19,20 +19,20 @@ public class Aeropuerto
     private String nombreCiudad;
     private double latitud;
     private double longitug;
-    private Set<String> codigosUtilizados;
+    private static Set<String> codigosUtilizados = new HashSet<String>();
     
     
     
     
 
     public Aeropuerto(String nombre, String codigo, String nombreCiudad, double latitud, double longitug) {
-		super();
+		
 		this.nombre = nombre;
 		this.codigo = codigo;
 		this.nombreCiudad = nombreCiudad;
 		this.latitud = latitud;
 		this.longitug = longitug;
-		this.codigosUtilizados = new HashSet<>();
+		Aeropuerto.codigosUtilizados.add(codigo);
 	}
 
 	/**

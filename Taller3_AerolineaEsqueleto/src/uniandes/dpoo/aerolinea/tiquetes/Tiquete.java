@@ -5,12 +5,14 @@ import uniandes.dpoo.aerolinea.modelo.Vuelo;
 public class Tiquete {
 	
 	private String codigo;
-	private Vuelo vuelo;
-	private Cliente clienteComprador;
 	private int tarifa;
 	private boolean usado;
+
+	private Vuelo vuelo;
+	private Cliente clienteComprador;
+	
 	public Tiquete(String codigo, Vuelo vuelo, Cliente clienteComprador, int tarifa) {
-		super();
+		
 		this.codigo = codigo;
 		this.vuelo = vuelo;
 		this.clienteComprador = clienteComprador;

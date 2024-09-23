@@ -14,17 +14,9 @@ public class Avion {
 		return nombre;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
 	public int getCapacidad() {
 		return capacidad;
 	}
 
-	public void setCapacidad(int capacidad) {
-		this.capacidad = capacidad;
-	}
-	
 
 }
